@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Website Loader</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    input {
+      width: 300px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Loader</h1>
+  <input type="text" id="urlInput" placeholder="Enter URL">
+  <button id="loadBtn">Open Website</button>
+
+  <script>
+    document.getElementById('loadBtn').addEventListener('click', function() {
+      let url = document.getElementById('urlInput').value.trim();
+      if (!url) return alert('Enter a URL!');
+      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      const w = window.open(url, '_blank');
+      if (!w) alert('Popup blocked!');
+    });
+  </script>
+</body>
+</html>
